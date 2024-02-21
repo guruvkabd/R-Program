@@ -1,0 +1,21 @@
+cat("\014") 
+packages="datasets" 
+print("Training Data:\n") 
+head(mtcars) 
+model <- lm(mpg ~ wt, data=mtcars) 
+plot(mtcars$wt,mtcars$mpg,main = "Simple Linear Regression (Mileage and Weight)") 
+abline(model,col = "red") 
+summary(model) 
+print("Testing Data:") 
+pred_mpg=predict(model, newdata=data.frame(wt=6))
+cat("Mileage per Gallons (Predicted):", pred_mpg) 
+coeff=model$coefficients 
+cat('y-Intercept (b0) :',coeff[1])
+cat('Coefficients (b1) :',coeff[2])
+model <- lm(mpg ~ wt + hp, data=mtcars)
+summary(model)
+coef(lm(mpg ~ wt + hp, data=mtcars))
+coef(lm(mpg ~ wt, data=mtcars))
+coef(lm(mpg ~ hp, data=mtcars))
+x<-predict(model, newdata = data.frame(wt=2.5, hp=275))
+x
